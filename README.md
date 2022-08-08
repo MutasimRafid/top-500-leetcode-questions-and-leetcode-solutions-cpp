@@ -1,2 +1,2 @@
-# top-500 leetcode and GFG questions and solutions in c++ by RAFID
+# top-500 leetcode and GFG questions and solutions in C++ by RAFID
 
