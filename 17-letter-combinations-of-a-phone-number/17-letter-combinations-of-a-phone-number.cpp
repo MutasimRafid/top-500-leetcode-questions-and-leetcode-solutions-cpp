@@ -1,5 +1,5 @@
 class Solution {
-private:
+    private:
     void solve(string digit, string output, int index, vector<string>& ans, string mapping[]){
         //base case
         if(index >= digit.length()){
@@ -7,19 +7,21 @@ private:
             return;
         }
         
-        int number = digit[index] - '0';
-        string value = mapping[number]; //2 = abc
+        int num = digit[index] - '0';
+        string value = mapping[num]; //2 = 'ábc'
         
         for(int i = 0;i<value.length();i++){
             output.push_back(value[i]);
-            //Recursion
-            solve(digit, output, index+1, ans, mapping);
+            
+            //recursive call
+            solve(digit,output,index+1,ans,mapping);
             //backtracking
             output.pop_back();
         }
     }
     
-public:
+    
+    public:
     vector<string> letterCombinations(string digits) {
         vector<string> ans;
         
@@ -28,11 +30,10 @@ public:
             return ans;
         }
         
-        string output = "";
         int index = 0;
-        
+        string output = "";
         string mapping[10] = {"", "", "abc", "def", "ghi", "jkl","mno","pqrs","tuv","wxyz"};
-        
+       
         solve(digits,output,index,ans,mapping);
         return ans;
     }
