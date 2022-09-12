@@ -1,0 +1,1 @@
+coding ninja and leetcode same problrm: fraz: https://youtu.be/u40eYbmT9zg
