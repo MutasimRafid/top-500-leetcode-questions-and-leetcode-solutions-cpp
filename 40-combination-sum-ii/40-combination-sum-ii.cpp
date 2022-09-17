@@ -1,46 +1,49 @@
+/* This question is exactly similar to  subset 2. 
+The only difference is that we have duplicates inside the given vector arr[]
+We need to skip the duplicate elements. Else they would generate Duplicate Combinations which we don't want
+To skip the Duplicate Elements, we will sort arr[] and use a While Loop to skip all the Duplicate Elements
+Also we need to keep track about sum that needs to be equal to target
+*/
+
 class Solution {
-public:
-    
-    //TC: O(2^n * k)
-    //SC: k * x
-    
-    void solve(int idx, int target, vector<int>& arr, vector<vector<int>> &ans, vector<int> &temp){
-        
+private:
+   void solve(int i, vector<int> &arr, vector<int> &output, vector<vector<int>> &ans, int sum, int n, int target){
         //base case
-        if(target == 0){
-            ans.push_back(temp);
+        // If sum is equal to target, we have reached a Valid Combination
+        if(sum == target){
+            ans.push_back(output);
             return;
         }
         
-        for(int i = idx; i < arr.size(); i++){
-            //idx = index of temp
-            //after popping element(backtracking) index size will be zero
-            //then next i will be > than idx 
-            //so if
-            //To avoid duplicate like: [[1,1,2], [1,1,2]]
-            if(i > idx && arr[i] == arr[i-1]) continue;
-            if(arr[i] > target) break;
-            
-            temp.push_back(arr[i]);
-            //recursive call
-            solve(i+1, target-arr[i],arr,ans,temp);
-            //backtracking
-            temp.pop_back();
-        }
+           // If at any moment, sum becomes greater than target, we don't need to proceed further
+        if(sum > target) return;
         
+        // If we reach the end of arr[], we cannot go any further so we return back
+        if(i == n) return;
+        
+        //include
+        output.push_back(arr[i]);
+        sum += arr[i];
+        solve(i+1,arr,output,ans,sum,n,target); //recursive call
+        output.pop_back(); //backtracking
+        sum -= arr[i];
+        
+        // Use the While Loop to skip all the duplicate occurrences of i-th Element
+        while(i+1 < arr.size() && arr[i] == arr[i+1]) i++;
+        
+        //exclude
+        solve(i+1,arr,output,ans,sum,n,target); //recursive call
     }
     
-    
-    
-    
-    vector<vector<int>> combinationSum2(vector<int>& arr, int target) {
-        sort(arr.begin(),arr.end());
-        
+public:
+    vector<vector<int>> combinationSum2(vector<int>& candidates, int target) {
+        vector<int> output;
         vector<vector<int>> ans;
-        vector<int> temp; 
+        int sum = 0;
+        int n = candidates.size();
+        sort(candidates.begin(),candidates.end());
         
-        solve(0,target,arr,ans,temp);
-        
+        solve(0,candidates,output,ans,sum,n,target);
         return ans;
     }
 };
