@@ -17,6 +17,9 @@ private:
         
         //stop same element in ans like: [[1,2,2],[1,2,2]]
         //you will take [1,2,2] only once
+        //to avoid duplicate element in ans, while excluding will avoid same digit.
+        //test case: 1,2,2 ...here will avoid the 1st 2 which is at i = 1, 
+        //there will be no exclude recursion call for i = 1 
         while(i<nums.size() - 1 && nums[i] == (nums[i+1]) ){
             i++;
         }
@@ -24,7 +27,7 @@ private:
         //exclude
         solve(i+1,output,nums,ans);
         
-        return;
+        
     }
     
 public:
