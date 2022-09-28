@@ -1,5 +1,5 @@
 class Solution {
-private: 
+private:
     void solve(vector<int> nums, vector<vector<int>>& ans, int index){
         //base case
         if(index >= nums.size()){
@@ -7,8 +7,8 @@ private:
             return;
         }
         
-        //solve for 1 case, rest will be taken care of by Recursion
-        for(int j = index; j < nums.size(); j++){
+        //solve for 1 case, rest will be taken care by recursion
+        for(int j = index;j<nums.size();j++){
             swap(nums[index],nums[j]);
             //recursive call
             solve(nums,ans,index+1);
@@ -16,7 +16,6 @@ private:
             swap(nums[index],nums[j]);
         }
     }
-    
 public:
     vector<vector<int>> permute(vector<int>& nums) {
         vector<vector<int>> ans;
