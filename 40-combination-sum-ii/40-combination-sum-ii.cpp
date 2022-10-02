@@ -15,13 +15,14 @@ private:
             return;
         }
         
-           // If at any moment, sum becomes greater than target, we don't need to proceed further
+          // If at any moment, sum becomes greater than target, we don't need to proceed further
         if(sum > target) return;
         
         // If we reach the end of arr[], we cannot go any further so we return back
         if(i == n) return;
         
-        //include
+        
+       //include
         output.push_back(arr[i]);
         sum += arr[i];
         solve(i+1,arr,output,ans,sum,n,target); //recursive call
@@ -41,7 +42,7 @@ public:
         vector<vector<int>> ans;
         int sum = 0;
         int n = candidates.size();
-        sort(candidates.begin(),candidates.end());
+        sort(candidates.begin(),candidates.end()); //to bring same elements of the given array together
         
         solve(0,candidates,output,ans,sum,n,target);
         return ans;
