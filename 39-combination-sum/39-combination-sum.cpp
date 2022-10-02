@@ -9,6 +9,7 @@ We can use an element as many times as we want
 Our given vector arr[] contains only Unique Subsets that's for sure
 */
 
+
 class Solution {
 public:
     void findCombination(int i, vector<int>& arr, int target, int sumNow, vector<int>& output, vector<vector<int>>& ans){
@@ -20,23 +21,21 @@ public:
             return;
         }
         
-        // If our sumTillNow exceeds target, there's no point in proceeding further(optimization)
+         // If our sumTillNow exceeds target, there's no point in proceeding further(optimization)
         if(sumNow > target) return;
         
          // If we have reached the end of arr[], we cannot go further as we don't have anymore elements
         if(i >= arr.size()) return;
         
         
-        
         //exclude
-        //recursive call
-        findCombination(i+1, arr, target, sumNow, output, ans);
+         findCombination(i+1,arr,target,sumNow,output,ans);
         
         //include
         sumNow += arr[i];
         output.push_back(arr[i]);
         //won't update i because we can take one element unlimited times
-        findCombination(i, arr, target, sumNow, output, ans); 
+        findCombination(i,arr,target,sumNow,output,ans);
         //backtracking
         sumNow -= arr[i];
         output.pop_back();
@@ -47,8 +46,9 @@ public:
         vector<int> output;
         int sumNow = 0;
         sort(candidates.begin(),candidates.end());
-        findCombination(0, candidates, target, sumNow, output, ans);
-        sort(ans.begin(),ans.end());
+        
+        findCombination(0,candidates,target,sumNow,output,ans);
+        
         return ans;
     }
 };
