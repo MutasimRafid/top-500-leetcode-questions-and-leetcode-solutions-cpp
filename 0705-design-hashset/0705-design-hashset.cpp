@@ -1,8 +1,8 @@
 class MyHashSet {
 public:
     /*
-    //solution1: only valid for 10^6 dataset
-    //As you can only create vector till 10^6
+    //solution1: only valid for 10^7 dataset
+    //As you can only create vector till 10^7
     vector<int> mp;
     int len;
     MyHashSet() {
