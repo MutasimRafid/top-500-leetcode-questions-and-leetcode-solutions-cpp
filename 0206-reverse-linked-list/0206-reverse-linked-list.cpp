@@ -10,6 +10,8 @@
  */
 class Solution {
 public:
+   //solution 1: iterative method
+    /*
     ListNode* reverseList(ListNode* head) {
         //solution iterative method
         if(head == NULL) return NULL;
@@ -22,5 +24,21 @@ public:
             if(n!=NULL) n = n->next;
         }
         return p;
+    }
+    */
+    
+    
+    //solution 2: Recursive method
+    ListNode* reverseList(ListNode* head) {
+        //Base case
+        if(head==NULL || head->next==NULL){
+           return head;
+        }
+        
+        ListNode* rest_head = reverseList(head->next);
+        ListNode* rest_tail = head->next;
+        rest_tail->next = head;
+        head->next = NULL;
+        return rest_head;
     }
 };
