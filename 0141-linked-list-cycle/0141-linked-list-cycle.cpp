@@ -8,7 +8,8 @@
  */
 class Solution {
 public:
-    //solution 1: using map
+    /*
+    //solution 1: using map. TC: O(n) ... SC: O(n)
     
     bool hasCycle(ListNode *head) {
         if(head == NULL) return false;
@@ -26,5 +27,18 @@ public:
             temp = temp->next;
         }
         return false;
+    }
+    */
+    
+    
+    //solution 2: slow and fast pointer
+     bool hasCycle(ListNode *head) {
+        ListNode* slow = head, *fast = head;
+         while(fast != NULL && fast->next != NULL){
+             slow = slow->next;
+             fast = fast->next->next;
+             if(fast == slow) return true;
+         }
+         return false;
     }
 };
