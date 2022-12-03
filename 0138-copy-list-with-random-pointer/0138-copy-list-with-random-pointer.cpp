@@ -16,6 +16,8 @@ public:
 
 class Solution {
 public:
+    //solution 1: with extra space
+    //TC: O(n) .... SC:O(n)
     Node* copyRandomList(Node* head) {
         map<Node*,Node*> m; //[key,value] = [previous list's address, New list's address]
         Node* temp = head;
