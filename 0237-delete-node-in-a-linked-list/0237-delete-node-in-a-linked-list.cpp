@@ -9,12 +9,13 @@
 class Solution {
 public:
     void deleteNode(ListNode* node) {
-        //if last node
+        //if last node/only one node is given
         if(node->next == NULL) delete node;
-
+        
         swap(node->val,node->next->val);
-        ListNode* temp2 = node->next;
+        ListNode* temp = node->next;
         node->next = node->next->next;
-        delete temp2;
+        delete temp;
+        
     }
 };
