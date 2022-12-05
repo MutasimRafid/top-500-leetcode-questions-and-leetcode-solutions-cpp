@@ -11,13 +11,31 @@
 class Solution {
 public:
     ListNode* middleNode(ListNode* head) {
-       ListNode* slow = head, *fast = head;
-        
+        //solution 1: TC: O(N).. but using 2 iteration
+        /*
+        int n = 0;//size of linked list
+        ListNode* temp = head;
+        //traversing linked list
+        while(temp != NULL){
+            n++;
+            temp = temp->next;
+        }
+        int half = n/2;
+        temp = head;
+        while(half--){
+            temp = temp->next;
+        }
+        return temp;
+        */
+
+
+        //solution 2: optimized
+        //slow and fast pointer: using only 1 iteration
+        ListNode *slow = head, *fast = head;
         while(fast != NULL && fast->next != NULL){
             slow = slow->next;
             fast = fast->next->next;
         }
-        
         return slow;
     }
 };
