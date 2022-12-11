@@ -34,19 +34,22 @@ public:
     //Time Complexity:  O(n+m) Reason: Iterating through list 1 first takes O(n), then iterating through list 2 takes O(m).  
     //Space Complexity: O(n)  Reason: Storing list 1 node addresses in unordered_set..
     /*
-    node* intersectionPresent(node* head1,node* head2) {
-     while(head2 != NULL) {
-        node* temp = head1;
-        while(temp != NULL) {
-            //if both nodes are same
-            if(temp == head2) return head2;
-            temp = temp->next;
-        }
+    //we will store node 1's address in the map
+  node* intersectionPresent(node* head1,node* head2) {
+      unordered_set<node*> st;
+      
+       while(head1 != NULL) {
+        st.insert(head1);
+        head1 = head1->next;
+       }
+       
+       while(head2 != NULL) {
+        if(st.find(head2) != st.end()) return head2;
         head2 = head2->next;
-      }
-    //intersection is not present between the lists return null
-    return NULL;
+       }
+       return NULL;
    }
+    
     */
     
     //solution 3: optimized..two pointer approach
@@ -55,6 +58,8 @@ public:
     Space Complexity: O(1)
     Reason: No extra data structure is used
     */
+    //approach: we will use two pointer. then we will sync two pointer
+    //watch video for detailed explanation
     ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
         ListNode* a = headA, *b = headB;
         while(a != b){
