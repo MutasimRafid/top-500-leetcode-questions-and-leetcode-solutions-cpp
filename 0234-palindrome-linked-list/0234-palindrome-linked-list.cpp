@@ -37,7 +37,7 @@ public:
   }
     
     bool isPalindrome(ListNode* head) {
-        ListNode *slow = head,*fast = head;
+        ListNode* slow = head, *fast = head;
         while(fast->next != NULL && fast->next->next != NULL){
             slow = slow->next;
             fast = fast->next->next;
