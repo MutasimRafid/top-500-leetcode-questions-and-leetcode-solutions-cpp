@@ -1,0 +1,2 @@
+Approach 1: https://takeuforward.org/data-structure/area-of-largest-rectangle-in-histogram/
+Approach 2: https://www.youtube.com/watch?v=lJLcqDsmYfg&list=PLDzeHZWIZsTrhXYYtx4z8-u8zA-DzuVsj&index=4&ab_channel=CodeHelp-byBabbar
