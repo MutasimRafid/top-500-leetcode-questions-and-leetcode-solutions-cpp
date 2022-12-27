@@ -21,12 +21,12 @@ class Solution
     int celebrity(vector<vector<int> >& M, int n) 
     {
         stack<int> s;
-        //step1: push all element in stack
+        //step1: push all row / col numbers in stack: 0..n-1
         for(int i=0; i<n; i++) {
             s.push(i);
         }   
         
-        //step2: get 2 elements and copare them
+        //step2: get 2 elements and compare them
         
         while(s.size() > 1) {
             
@@ -36,20 +36,20 @@ class Solution
             int b = s.top();
             s.pop();
             
-            if(knows(M,a,b,n)){
+            if(knows(M,a,b,n)){ //if a knows b
                 s.push(b);
             }
             else
             {
-                s.push(a);
+                s.push(a);  //if b knows a
             }
         }
-        int ans = s.top();
+        int ans = s.top(); //there will be at least 1 row/col number that is potential celeb
         //step3: single element in stack is potential celeb
         //so verify it
         
         int zeroCount = 0;
-        
+        //row check
         for(int i=0; i<n; i++) {
             if(M[ans][i] == 0)
                 zeroCount++;
@@ -67,7 +67,7 @@ class Solution
                 oneCount++;
         }
         
-        if(oneCount != n-1)
+        if(oneCount != n-1) //n-1 because excluding the diagonal element
             return -1;
         
         return ans;
