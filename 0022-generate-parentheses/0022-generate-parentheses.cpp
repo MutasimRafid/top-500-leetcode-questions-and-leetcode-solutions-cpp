@@ -1,6 +1,8 @@
 class Solution {
 public:
     void solve(vector<string> &v, int n, int oc, int cc, string s){
+        //TC: 2^n
+        
         //base case
         if(oc == n && cc == n){
             v.push_back(s);
@@ -8,10 +10,10 @@ public:
         }
         
         if(oc<n){
-            solve(v, n, oc+1, cc, s+"(");
+           solve(v,n,oc+1,cc,s+"("); 
         }
         if(cc<oc){
-            solve(v, n, oc, cc+1, s+")");
+            solve(v,n,oc,cc+1,s+")");
         }
     }
     
