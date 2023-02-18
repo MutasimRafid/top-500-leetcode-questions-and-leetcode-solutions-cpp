@@ -93,6 +93,8 @@ struct Node
 
 class Solution {
   public:
+  /*
+  //solution 1:
   //TC: O(n^2)...SC: O(height of binary tree)[worst case O(n)]
     
     int height(struct Node* node){
@@ -121,6 +123,42 @@ class Solution {
         
         int ans = max(op1, max(op2,op3));
         return ans;
+    }
+  */
+  
+  //solution 2: 
+  //TC: O(n) SC: O(n)
+  //we will use pair<int,int>  .. <diameter,height>
+  //so we don't need to use nested recursion.. we will be use only 1 recursion
+    
+    pair<int,int> diameterFast(Node* root){
+        if(root == NULL){
+            //base case
+            pair<int,int> p = make_pair(0,0);
+            return p;
+        }
+        
+        pair<int,int> left = diameterFast(root->left);
+        pair<int,int> right = diameterFast(root->right);
+        
+        int op1 = left.first;
+        int op2 = right.first;
+        int op3 = left.second + right.second +1;
+        
+        pair<int,int> ans;
+        ans.first = max(op1,max(op2,op3)); //ans.first = diameter
+        ans.second = max(left.second,right.second)+1; //ans.second = height
+        
+        return ans;
+    }
+    
+    
+    // Function to return the diameter of a Binary Tree.
+    int diameter(Node* root) {
+        // Your code here
+        return diameterFast(root).first;
+        
+        
     }
 };
 
