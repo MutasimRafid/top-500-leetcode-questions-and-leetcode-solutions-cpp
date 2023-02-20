@@ -103,6 +103,9 @@ struct Node
 
 class Solution{
     public:
+    //solution 1: 
+    //TC: O(n^2) .. sc: O(n)
+    /*
     int height(struct Node* node){
         // code here 
         //base case
@@ -139,6 +142,48 @@ class Solution{
         else{
             return false;
         }
+    }
+    */
+    
+    //solution 2: TC: O(n)...SC: O(n)
+    //using pair<> to reduce time complexity
+    
+    pair<bool,int> isBalancedFast(Node* root){
+        //base case
+        if(root == NULL){
+            pair<bool,int> p = make_pair(true,0);
+            return p;
+        }
+        
+        pair<int,int> left = isBalancedFast(root->left);
+        pair<int,int> right = isBalancedFast(root->right);
+        
+        bool leftAns = left.first;
+        bool rightAns = right.first;
+        
+        bool diff = abs(left.second-right.second) <= 1; //left.second = height left
+        
+        pair<bool,int> ans;
+        ans.second = max(left.second,right.second) + 1;
+        
+        if(leftAns && rightAns && diff){
+            ans.first = true;
+        }
+        else{
+            ans.first = false;
+        }
+        
+        return ans;
+        
+    }
+    
+    //Function to check whether a binary tree is balanced or not.
+    bool isBalanced(Node *root)
+    {
+        //  Your Code here
+        return isBalancedFast(root).first;
+            
+        
     }
 };
 
