@@ -103,6 +103,7 @@ struct Node {
 class Solution{
     public:
     //Function to store the zig zag order traversal of tree in a list.
+    //TC: O(n)... SC: O(n)
     vector <int> zigZagTraversal(Node* root)
     {
     	// Code here
