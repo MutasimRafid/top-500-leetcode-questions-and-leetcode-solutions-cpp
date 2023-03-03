@@ -107,6 +107,8 @@ class Solution {
 public:
     void traverseLeft(Node* root, vector<int> &ans){
         //base case
+        //(root->left == NULL && root->right == NULL)) return;
+        //as we won't take the leaf node of left subtree
         if((root == NULL) || (root->left == NULL && root->right == NULL)) return;
         
         ans.push_back(root->data);
@@ -138,6 +140,8 @@ public:
     
     void traverseRight(Node* root, vector<int> &ans){
         //base case
+        //(root->left == NULL && root->right == NULL))
+        //excluding the leaf node of right subtree
         if((root == NULL) || (root->left == NULL && root->right == NULL)){
             return;
         }
