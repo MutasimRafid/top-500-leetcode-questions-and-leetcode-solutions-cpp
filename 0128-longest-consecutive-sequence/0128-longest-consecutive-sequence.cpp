@@ -1,7 +1,6 @@
 class Solution {
 public:
     int longestConsecutive(vector<int>& nums) {
-        
         //1st approach: use sorting 
         //TC: nlogn
         
@@ -11,7 +10,7 @@ public:
         
         set<int> s;
         //insert all elements into set
-        for(int num: nums){
+        for(int num:nums){
             s.insert(num);
         }
         
@@ -19,8 +18,8 @@ public:
         int currNum = 0;
         int currStreak = 0;
         
-        for(int num: nums){
-            //if previous element does not exist
+        for(int num:nums){
+            //if previous element doesn't exist
             if(!s.count(num-1)){
                 currNum = num;
                 currStreak = 1;
@@ -33,7 +32,6 @@ public:
                     currStreak += 1;
                 }
             }
-            
             longestStreak = max(longestStreak,currStreak);
         }
         
