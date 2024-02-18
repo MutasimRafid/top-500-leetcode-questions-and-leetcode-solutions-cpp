@@ -1,24 +1,18 @@
 class Solution {
 public:
-    
-    //solution 1: using nested loop ..TC: O(n^2)...SC: O(1)
-    //solution 2: using sorting... TC: O(nlogn)..SC: O(1)
-    //solution 3: using map/array to count frequency .. TC: O(logn)  SC:O(n)
-    
     bool containsDuplicate(vector<int>& nums) {
-       map<int,int> countMap;
+        //1. use nested loop. tc: o(n^2)
+        //2. use sorting. tc: o(nlogn)
+        //3. use map. tc: logn
+            //use map. and count frequency.
+        
+        map<int,int> countMap;
         
         for(int i = 0;i<nums.size();i++){
-            
-            //if the element appears 2nd time
-            //if countMap[nums[i]] is already 1 (not zero)
-            
             if(countMap[nums[i]]){
                 return true;
             }
             
-            //if the element appears first time
-            //hashing
             countMap[nums[i]]++;
         }
         return false;
