@@ -1,10 +1,9 @@
 class Solution {
 public:
     bool containsDuplicate(vector<int>& nums) {
-        //1. use nested loop. tc: o(n^2)
-        //2. use sorting. tc: o(nlogn)
-        //3. use map. tc: logn
-            //use map. and count frequency.
+        //1. using nested loop .. TC: O(n^2).. SC: O(1)
+        //2. using sorting .. TC: O(nlogn).. SC: O(1)
+        //3. using map and count frequency.. TC: O(n).. SC: O(n)
         
         map<int,int> countMap;
         
@@ -15,6 +14,7 @@ public:
             
             countMap[nums[i]]++;
         }
+        
         return false;
     }
 };
